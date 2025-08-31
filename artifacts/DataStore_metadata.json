@@ -1,0 +1,93 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "read",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "_num",
+						"type": "uint256[]"
+					}
+				],
+				"name": "store",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"src/DataStore.sol": "DataStore"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"src/DataStore.sol": {
+			"keccak256": "0x5001f5957deb9c471475ae1ea897e818a22a70aaa077a7d5fc4c2fb0e9915e14",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://911119190581bcd818cccc44d5fd03dcc3a884ede67ea74d44d1b3104b3d3c98",
+				"dweb:/ipfs/QmUqeyApkV8qLVTQyhNGESCSefvHxGjE5eSRPgXBeh9RDM"
+			]
+		},
+		"src/ownable.sol": {
+			"keccak256": "0x1917486f2874a9a09ec0e5b0b4adc130d712f01fa755a832d69d14acac47c2cf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5061faefc9fbfa820a354976faee5baafbf87d60c1f42ef74318b1bc3bc97557",
+				"dweb:/ipfs/QmTwVSTSeq8LyogMnrH6BKjCt7HZr37rfMpM8LJADwn1L4"
+			]
+		}
+	},
+	"version": 1
+}
