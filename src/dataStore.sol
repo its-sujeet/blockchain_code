@@ -7,7 +7,7 @@ contract DataStore is Ownable{
     mapping (address => uint256 []) addressToNum;
 
     function store(uint256 [] calldata _num ) public {
-        require(msg.sender == owner, "You are not the contract owner");
+        // require(msg.sender == owner, "You are not the contract owner");
         addressToNum[msg.sender] = _num;
     }
 

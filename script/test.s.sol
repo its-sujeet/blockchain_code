@@ -2,17 +2,13 @@
 pragma solidity ^0.8.20;
 
 import {Script} from "forge-std/Script.sol";
+import "../src/test.sol";
 
-
-import "../src/Counter.sol";
 contract Founder is Script{
-
-    function run() external returns(Counter){
+    function run() external returns(Test){
         vm.startBroadcast();
-        Counter counter = new Counter();
+        Test test = new Test();
         vm.stopBroadcast();
-        return counter;
+        return test;
     }
-
-
 }
