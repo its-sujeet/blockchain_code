@@ -13,7 +13,7 @@ contract simpleStore{
         favNum= _favNum;
     }
 
-    function retrive() private  view returns  (uint256){
+    function retrive() public  view returns  (uint256){
         return favNum;
     }
 
@@ -30,8 +30,9 @@ contract simpleStore{
 
     }
 
-
-
-
+    function getPerson(uint _index) public view returns (string memory, uint) {
+        Person memory p = persons[_index];
+        return (p.name, p.favNum);
+    }
 
 }
