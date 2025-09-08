@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0 <0.6.0;
+pragma solidity ^0.8.20;
 
 contract ZombieFactory{
     uint public dnaDigits =16; // decared a variable with value 16

@@ -5,10 +5,10 @@ import {Script} from "forge-std/Script.sol";
 import "../src/test.sol";
 
 contract Founder is Script{
-    function run() external returns(Test){
+    function run() external returns(ZombieFactory){
         vm.startBroadcast();
-        Test test = new Test();
+        ZombieFactory zombieFactory = new ZombieFactory();
         vm.stopBroadcast();
-        return test;
+        return zombieFactory;
     }
 }
