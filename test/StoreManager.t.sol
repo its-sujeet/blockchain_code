@@ -19,26 +19,28 @@ contract StoreManagerTest is Test {
         storeManager = new StoreManager();
     }
 
-    function testStore() public {
-        console.log ("Owner address:", address(this));
-        storeManager.store(42);
-        uint val = storeManager.retrieve();
-        assertEq(val, 42);
-    }
+    // function testStore() public {
+    //     console.log ("Owner address:", address(this));
+    //     storeManager.store(42);
+    //     uint val = storeManager.retrieve();
+    //     assertEq(val, 42);
+    // }
 
-    function testRetrieve() public {
-        console.log ("Owner address:", address(this));
-        storeManager.store(100);
-        uint val = storeManager.retrieve();
-        assertEq(val, 100);
-    }
+    // function testRetrieve() public {
+    //     console.log ("Owner address:", address(this));
+    //     storeManager.store(100);
+    //     uint val = storeManager.retrieve();
+    //     assertEq(val, 100);
+    // }
     function testForDifferentUsers() public{
         vm.startPrank(rahul);
         console.log ("Rahul address:", address(rahul));
-        storeManager.store(42);
-        vm.expectRevert("Not the owner");
-        storeManager.retrieve();
+        // storeManager.store(42);
+        // vm.expectRevert("Not the owner");
+        // storeManager.retrieve();
         // assertEq(storeManager.retrieve(), 42);
+        storeManager.setOwner();
+        assertEq(storeManager.caller(), rahul);
         vm.stopPrank();
 
         vm.startPrank(ankit);

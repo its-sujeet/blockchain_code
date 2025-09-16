@@ -2,12 +2,25 @@
 pragma solidity ^0.8.20;
 
 contract StoreManager {
-    address private owner;
-    constructor() {
-        owner = msg.sender;
+    address public caller;
+    address public owner1;
+    address constant ankit = address(0x2);
+    address constant rahul = address(0x1);
+
+    // constructor() {
+    //     // owner = ankit;
+    //     owner1= rahul;
+    // }
+    function setOwner() external {
+        // owner = msg.sender;
+        caller= msg.sender;
     }
+
+
+    
+
     modifier onlyOwner() {
-        require(msg.sender == owner, "Not the owner");
+        require(msg.sender == owner1, "Not the owner");
         _;
     }
 
