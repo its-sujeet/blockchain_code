@@ -1,0 +1,281 @@
+Solidity
+
+Variables > data value
+> data types
+> location
+
+DataTypes : uint, string, bool, address, struct
+contract Name{
+    uint256 internal A;//internal by default
+}
+
+Variable Visibility:
+
+Public: Any var can read,we are just creating a getter function.
+Private: Only accessible within the contract
+Internal: same as private, child contacts can also access this var.
+
+Constant and Immutable:
+
+uint256 internal A =1;
+>>uint constant A = 1; // compile time
+>>constructor(){
+    int A = 1; //immutable >> At the time of deployment
+}
+function changeA(uint) public return(uint){
+    returns A;
+
+}
+==================
+contract A{
+constructor() {
+    uint256 internal A =1;//immutable var
+    }
+}
+contract B is A{
+function changeA() public returns(uint){
+    return A;
+
+}
+}
+
+Classification of DataTypes:
+1. Value type -  DataTypes that hold the value. eg ; uint, int, address, bool
+2. Reference Type - don't store the value but stores the pointer to the location. eg: strings, arrays, mapping, struct, etc
+
+Storage Location 
+1. Storage - Permanent strg on blockchain
+            - the most expensive 
+            - for state variables
+2. Memory   - Temp stoprage on bloackchain
+            - Cheaper than storage 
+3. Calldata - similaar to memory    
+            - the most efficient in terms Gas 
+
+ uint256 internal memory A =1; // will consume more gas
+  uint256 internal calldata B =1;
+
+
+
+
+
+
+>> Trnsac 1 > gas 1 wei > time 1 sec
+Trnsac 2 > gas 2 wei > time 2 sec
+
+wei  eth  e18 >> 1e18 = 1 eth = 1 *10**18 wei
+
+
+Function >
+
+Visiblity:
+
+Public: Accessible to alll
+Private: only accessible to this contract
+Internal: Accessible to this contract and its child contract
+External: Only calls from outside are allowed
+
+
+contract B {
+function changeA() external returns(uint){
+    uint256 A =1;
+    return A;
+
+}
+function check() public view returns(uint){
+   
+   A = A+1;
+}
+
+Function Types
+1. View - can read but can't modify state 
+2. Pure - Can not read or even write > mathametical calc
+3. Constructor - Runs only once when deployed
+4. Payable - receive ether
+5 modifier 
+
+modifier onlyOwner(){
+    
+    require (msg.sender == owner);
+    _;
+}
+
+
+function check() public view payable returns(uint){
+   
+  bal = msg.value + bal;
+}
+
+
+Transaction Context Var 
+msg.sender - caller of the transaction
+msg.value - amount of ether we are sending
+msg.data - complete calldata of the transaction 
+
+Block Information Var 
+block.timestamp - current time stamp
+block.number - current block number
+
+Modifier - reusable logic
+
+contract Name{
+    uint256 internal A;//internal by default
+    a = 2;
+    b = 3;
+    modifier add(){
+         _; // z = x + c >> give error since we don't have c
+      require (c = a + b); //3 = 2
+       
+    }
+
+    function add2num(uint a, uint b) add public returns(uint){
+        c = 3;
+        return uint;
+    } 
+}
+
+;
+owner = 0xA;
+
+modifier onlyOwner(){
+    require(msg.sender == owner);
+    _;
+}
+
+function CheckOwnere() onlyowner external {
+    z = x + c;
+}
+
+
+ABI - App Binary Interface 
+
+> What funct the contracts has
+> QWhat param each funct call
+> What datatype of values it returns 
+
+
+Inheritance 
+
+contract A{
+  function add() external virtual   returns(){
+    c = 2 + a; //a is input given by user
+  } 
+}
+
+contract B is A{
+   function add() external  override returns(){
+    c = 3+a;
+  } 
+}
+
+
+extend the function
+contract A{
+  function add() external  returns(){
+    c = hello;
+  } 
+}
+
+contract B is A{
+   function add() external  returns(){
+     return  string.concat(super.add(), "world"); //hello world
+  } 
+}
+
+    require(msg.sender == owner);
+
+
+modifier onlyOwner(){
+     _;
+    msg.sender == owner; //2301 > 2000
+    revert();
+   ..
+   ..
+
+   ..
+   .
+   .
+}
+
+
+Reverts
+- Undo evrything if condition fails
+- sends the remaining gas back to user
+
+require(condition);
+assert(condition);
+assertEq(condition);
+revert();
+contract B{
+   function add() external  override returns(){
+    for (i =0, i <4, i++)
+    c = 3+i; //i = 4
+    revert();
+  } 
+}
+
+
+3 Ways to send ether 
+1. Transfer - Trnsfer ether to an address
+ - Receiver should be marked payable 
+
+ contract A{
+
+ payable (msg.sender).transfer(address(this).balance);
+ }
+
+ 2300 gas capped for transfer
+
+ 2. Send 0 - 2300 gas capped for transfer
+
+ contract A{
+
+ bool success = payable(msg.sender).send(address(this).balance); //address(this).balance =1 , success =1/true
+ require(success, "Transaction Failed"); 
+ // if last lone won't, 236 won't execute
+ balance(msg.sender) = balance(msg.sender) + address(this).balance // if it succeeds
+ }
+
+ 3. Call - low level call 
+ returns 2 things - bool fo success , data associated
+
+ bool(success, ) = payable(msg.sender).call{value:address(this).balance}("");
+ require(success, "failed");
+
+ 
+
+
+ Library 
+
+ - similar to  Contract 
+
+ contra name
+ library name
+
+ - library name{
+
+    uint a =2
+
+ }
+
+ - library doesn't have any state var
+ - by default  func or var are marked iinternal
+
+
+library name{
+
+    uint a =2
+
+ }
+
+ contract A{
+    using name for uint;
+    // after this line any uint in the imported contract can call function from the lib
+        a= a/b; >> 
+    }
+
+
+    a = 1/3 = 0
+    lib > a/b > floor function 
+    a >=0.5  >>> 1
+    a < 0.4 >>> 0
