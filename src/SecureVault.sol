@@ -8,9 +8,9 @@ contract SecureVault is BaseVault {
 
     event Deposited(address user, uint amount);
     event Withdrawn(address user, uint amount);
-    
+
     function withdraw(uint amount) public override {
-        require(amount <= 0.1 ether, "Maximum withdrawal is 0.1 ether");
+        require(amount >= 0.1 ether, "Minimum withdrawal is 0.1 ether");
         super.withdraw(amount);
         emit Withdrawn(msg.sender, amount);
     }
