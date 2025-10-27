@@ -29,5 +29,7 @@ contract Counter {
         return a + b;
     }
 
+    //this is the contract that we wrote previously
+
 
 }
